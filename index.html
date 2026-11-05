@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Glowie World – Find Your Glow Blend</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Portfolio bar (only shows on desktop) -->
+    <header class="portfolio-bar">
+      <span class="portfolio-bar__tag">Interactive demo · best on mobile</span>
+    </header>
+
+    <!-- Samsung frame -->
+    <div class="device">
+      <span class="device__btn device__btn--volume"></span>
+      <span class="device__btn device__btn--power"></span>
+
+      <!-- The whole ad lives inside this "phone" box -->
+      <div class="phone" id="phone" data-screen="welcome">
+        <span class="phone__camera"></span>
+
+        <!-- Fake status bar (only shows inside the desktop phone frame) -->
+        <div class="status-bar">
+          <span>10:30</span>
+          <span class="status-bar__icons">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 18.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5zM3.5 10.6l1.6 1.7a9.8 9.8 0 0 1 13.8 0l1.6-1.7a12.2 12.2 0 0 0-17 0zm3.3 3.4 1.6 1.7a5 5 0 0 1 7.2 0l1.6-1.7a7.3 7.3 0 0 0-10.4 0z"
+              />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M3 18h3v3H3zm5-4h3v7H8zm5-4h3v11h-3zm5-5h3v16h-3z" />
+            </svg>
+            <span class="status-bar__battery">100</span>
+          </span>
+        </div>
+
+        <!-- Small logo header on the quiz + result screens -->
+        <header class="top-bar">
+          <img class="top-bar__logo" src="assets/logo.png" alt="Glowie World" />
+        </header>
+
+        <!-- ===== SCREENS ===== -->
+        <main class="screens">
+          <!-- 1. WELCOME -->
+          <section class="screen is-active" id="screen-welcome">
+            <div class="welcome__logo-wrap">
+              <img
+                class="welcome__logo"
+                src="assets/logo.png"
+                alt="Glowie World – Making healthy choices easier"
+              />
+              <!-- Sparkles around the logo -->
+              <span
+                class="sparkle"
+                style="--x: -6%; --y: 8%; --s: 18px; --d: 0s"
+              ></span>
+              <span
+                class="sparkle sparkle--pink"
+                style="--x: 98%; --y: 18%; --s: 22px; --d: 0.4s"
+              ></span>
+              <span
+                class="sparkle sparkle--pink"
+                style="--x: 4%; --y: 62%; --s: 12px; --d: 0.9s"
+              ></span>
+              <span
+                class="sparkle"
+                style="--x: 102%; --y: 66%; --s: 14px; --d: 1.3s"
+              ></span>
+              <span
+                class="sparkle sparkle--pink"
+                style="--x: 50%; --y: -6%; --s: 10px; --d: 0.7s"
+              ></span>
+              <span
+                class="sparkle"
+                style="--x: 86%; --y: 96%; --s: 10px; --d: 1.6s"
+              ></span>
+            </div>
+
+            <!-- The same capsule3d.png is used twice: one shows the left capsule,
+               one the right capsule, so script.js can move them separately -->
+            <div class="capsules" id="capsules">
+              <img
+                class="capsule capsule--left"
+                id="capsule-left"
+                src="assets/capsule3d.png"
+                alt="Glowie World coffee capsules"
+              />
+              <img
+                class="capsule capsule--right"
+                id="capsule-right"
+                src="assets/capsule3d.png"
+                alt=""
+              />
+            </div>
+
+            <h1 class="welcome__title">Coffee that makes you <em>glow</em></h1>
+            <p class="welcome__text">
+              2 quick questions. 1 perfect blend for your mood &amp; your skin.
+            </p>
+
+            <button class="btn btn--primary btn--pulse" id="start-btn">
+              Start the quiz ✦
+            </button>
+          </section>
+
+          <!-- 2. QUESTION 1 – temperature / flavour -->
+          <section class="screen" id="screen-q1">
+            <div class="progress">
+              <span class="progress__dot is-on"></span
+              ><span class="progress__dot"></span>
+            </div>
+            <h2 class="question">
+              What's our <em>temperature</em> mood today?
+            </h2>
+            <!-- Options are added by script.js -->
+            <div class="options" id="options-drinks"></div>
+          </section>
+
+          <!-- 3. QUESTION 2 – beauty goal -->
+          <section class="screen" id="screen-q2">
+            <div class="progress">
+              <span class="progress__dot is-on"></span
+              ><span class="progress__dot is-on"></span>
+            </div>
+            <h2 class="question">What is our <em>beauty</em> goal today?</h2>
+            <div class="options" id="options-benefits"></div>
+          </section>
+
+          <!-- 4. BREWING (short loading animation) -->
+          <section class="screen" id="screen-brewing">
+            <div class="brewing__cup">
+              <!-- the circle stays still, the coffee inside slowly swirls -->
+              <div class="brewing__circle">
+                <img src="assets/coffeeiceimage.jpg" alt="" />
+              </div>
+              <span class="steam steam--1"></span>
+              <span class="steam steam--2"></span>
+              <span class="steam steam--3"></span>
+            </div>
+            <p class="brewing__text" id="brewing-text">Grinding the beans…</p>
+            <div class="brewing__bar"><span></span></div>
+          </section>
+
+          <!-- 5. RESULT -->
+          <section class="screen" id="screen-result">
+            <p class="result__tag">✦ Your perfect match ✦</p>
+
+            <!-- result__pod takes the free space: icons | square photo | sparkles -->
+            <div class="result__pod">
+              <!-- the icons of your two answers (filled in by script.js) -->
+              <div class="result__icons">
+                <span class="result__icon"><img id="result-icon-temp" src="assets/hotcoffee.svg" alt="" /></span>
+                <span class="result__icon"><img id="result-icon-benefit" src="assets/collagen.svg" alt="" /></span>
+              </div>
+
+              <div class="result__frame">
+                <img id="result-img" src="assets/capsulepink.jpg" alt="" />
+                <div class="burst" id="burst"></div>
+              </div>
+
+              <!-- sparkles, same style as around the logo -->
+              <div class="result__sparkles">
+                <span class="sparkle sparkle--pink" style="--x: 40%; --y: 14%; --s: 22px; --d: 0s"></span>
+                <span class="sparkle" style="--x: 72%; --y: 32%; --s: 12px; --d: 0.5s"></span>
+                <span class="sparkle sparkle--pink" style="--x: 30%; --y: 50%; --s: 14px; --d: 1s"></span>
+                <span class="sparkle" style="--x: 66%; --y: 68%; --s: 18px; --d: 0.3s"></span>
+                <span class="sparkle sparkle--pink" style="--x: 38%; --y: 86%; --s: 10px; --d: 1.4s"></span>
+              </div>
+            </div>
+
+            <h2 class="result__title" id="result-title">Beetroot Latte</h2>
+            <p class="result__subtitle" id="result-subtitle">
+              + Collagen glow boost
+            </p>
+            <p class="result__desc" id="result-desc"></p>
+
+            <div class="card">
+              <h3 class="card__title">How to make it</h3>
+              <ol class="steps" id="result-steps"></ol>
+            </div>
+
+            <button class="btn btn--primary btn--pulse" id="cta-btn">
+              Get my Glowie blend
+            </button>
+            <p class="result__footer">
+              <span>Demo ad – not for sale (yet!)</span>
+              <button class="link-btn" id="restart-btn">↻ Try again</button>
+            </p>
+          </section>
+        </main>
+
+        <!-- ===== BOTTOM NAV ===== -->
+        <nav class="bottom-nav">
+          <span class="bottom-nav__indicator"></span>
+          <button class="nav-btn" id="nav-home" aria-label="Home">
+            <img src="assets/navbarHome.svg" alt="" />
+          </button>
+          <button class="nav-btn" aria-label="Favourites">
+            <img src="assets/navbarHeart.svg" alt="" />
+          </button>
+          <button class="nav-btn" aria-label="Cart">
+            <img src="assets/navbarShoppingCart.svg" alt="" />
+          </button>
+          <button class="nav-btn" aria-label="Notifications">
+            <img src="assets/navbarNotificationBell.svg" alt="" />
+          </button>
+        </nav>
+
+        <!-- Little pop-up message (used for the demo CTA) -->
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
