@@ -1,0 +1,14 @@
+{
+  "name": "Glowie World Coffee Quiz",
+  "short_name": "Glowie Quiz",
+  "description": "Find the Glowie World coffee blend that matches your mood and your beauty goal.",
+  "start_url": "../../index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

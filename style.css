@@ -399,7 +399,7 @@ em {
 .capsules {
   position: relative;
   width: min(100%, 50cqh);
-  aspect-ratio: 1346 / 757; /* size of capsule3d.png */
+  aspect-ratio: 900 / 506; /* size of capsule3d.webp */
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   /* shadow goes on the box, so it isn't cut off by the clip-path below */
